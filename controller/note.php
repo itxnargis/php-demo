@@ -5,17 +5,18 @@ $db = new Database($config['database']);
 
 $heading = "Note";
 
-$note = $db->query("SELECT * FROM note WHERE user_id = :user and id = :id", [
-    // 'user' => 1,
+$note = $db->query("SELECT * FROM note WHERE id = :id", [
     'id' => $_GET['id']
-    ])->fetch();
+])->fetch();
 
-    if(! $note){
-abort();
-    }
+if (!$note) {
+    abort();
+}
 
-    if($note['user_id'] !== 1){
-        abort(403);
-    }
+$currentUserId = 1;
+
+if ($note['user_id'] !== $currentUserId) {
+    abort(Response::FORBIDDEN);
+}
 
 require "views/note.view.php";
