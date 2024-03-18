@@ -1,8 +1,8 @@
-<?php require("partials/head.php") ?>
-<?php require("partials/nav.php"); ?>
-<?php require("partials/header.php"); ?>
+<?php require base_path("views/partials/head.php") ?>
+<?php require base_path("views/partials/nav.php"); ?>
+<?php require base_path("views/partials/header.php"); ?>
 <main>
-    <div>
+    <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
         <div class="md:grid md:grid-cols-3 md:gap-6">
             <div class="mt-5 md:col-span-2 md:mt-0">
                 <form method="POST">
@@ -11,11 +11,12 @@
                             <div>
                                 <label for="body" class="block text-sm font-medium text-gray-700">Body</label>
                                 <div class="mt-1">
-                                    <textarea id="body" name="body" rows="3" class="mt-1 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Here's an idea for a note..."></textarea>
+                                <textarea id="body" name="body" rows="3" class="mt-1 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Here's an idea for a note..."><?= $_POST['body'] ?? '' ?></textarea>
 
-                                    <?php if(isset($errors['body'])) : ?>
+
+                                    <?php if (isset($errors['body'])) : ?>
                                         <p class="text-red-500 text-xs mt-2"><?= $errors['body'] ?></p>
-                                        <?php endif; ?>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
@@ -29,4 +30,4 @@
     </div>
 </main>
 
-<?php require("partials/footer.php") ?>
+<?php require base_path("views/partials/footer.php") ?>

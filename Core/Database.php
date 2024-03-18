@@ -1,5 +1,8 @@
 <?php
 
+namespace Core;
+use PDO, PDOException;
+
 class Database
 {
     public $connection;
