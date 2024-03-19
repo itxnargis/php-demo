@@ -4,16 +4,11 @@ namespace Core;
 
 class Router
 {
-
     protected $routes = [];
 
     public function add($method, $uri, $controller)
     {
-        $this->routes[] = [
-            'uri' => $uri,
-            'controller' => $controller,
-            'method' => $method
-        ];
+        $this->routes[] = ['uri' => $uri, 'controller' => $controller, 'method' => $method];
     }
 
     public function get($uri, $controller)
@@ -50,10 +45,10 @@ class Router
         }
         $this->abort();
     }
+
     protected function abort($code = 404)
     {
         http_response_code($code);
-
         require base_path("views/{$code}.php");
         die();
     }
