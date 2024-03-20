@@ -5,6 +5,8 @@ use Core\App;
 
 require_once __DIR__ . '/../../Core/Validator.php';
 
+$db = App::resolve(Database::class);
+
 $email = $_POST['email'];
 $password = $_POST['password'];
 
@@ -42,9 +44,7 @@ else {
         'password' => password_hash($password, PASSWORD_BCRYPT)
     ]);
 
-    $_SESSION['user'] = [
-        'email' => $email
-    ];
+   login($user);
 
     header('location: /');
     exit();
